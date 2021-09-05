@@ -8,7 +8,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
         self.setupUi(self)
-        p1 = QPixmap('Scream3.jpg')
+        self.start_img = 'Image/Scream3.jpg'
+        p1 = QPixmap(self.start_img)
         self.label.setPixmap(p1)
         self.label.resize(p1.width(), p1.height())
         self.pushButton.clicked.connect(self.change_color)
@@ -19,7 +20,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if edit_colors:
             edit_colors = transform_colors(edit_colors)
         K = int(self.spinBox.text())
-        change_colors('Scream3.jpg', K, edit_colors)
+        change_colors(self.start_img, K, edit_colors)
         res_img = QPixmap('res.jpg')
         self.label_2.setPixmap(res_img)
         self.label_2.resize(res_img.width(), res_img.height())
@@ -31,6 +32,3 @@ if __name__ == '__main__':
     mw = MainWindow()
     mw.show()
     app.exec_()
-
-    # colors = transform_colors('a7a5c6 8797b2 6d8a96 5d707f 66ced6 64B7C1')
-    # change_colors('Scream3.jpg', 8, colors)

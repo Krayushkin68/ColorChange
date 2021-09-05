@@ -27,13 +27,10 @@ def transform_colors(col):
 
 
 def change_colors(img, means, col):
-
-    # change_colors = [cv2.cvtColor(np.uint8([[i]]), cv2.COLOR_BGR2RGB) for i in col]
     change_colors = [cv2.cvtColor(np.uint8([[i]]), cv2.COLOR_BGR2HSV) for i in col]
 
     # ---------------------------------  Load default image ----------------------------------------------------
     img = cv2.imread(img)
-    # cv2.imshow('res', img)
     Z = img.reshape((-1, 3))
 
     # ---------------------------------  Find K main colors ----------------------------------------------------
@@ -50,7 +47,6 @@ def change_colors(img, means, col):
     keys = list(colors.keys())
     random.shuffle(keys)
     ch_dict = {i: j for i, j in zip(keys, change_colors)}
-    print(change_colors)
 
     for num, i in enumerate(hsv[:, :, 0][0]):
         for col_name, val in colors.items():
@@ -68,9 +64,7 @@ def change_colors(img, means, col):
     Z = np.uint8(Z)
 
     Z = Z.reshape((img.shape))
-    # cv2.imshow('res1', Z)
     cv2.imwrite('res.jpg', Z)
-    # cv2.waitKey(0)
 
 
 if __name__ == '__main__':
