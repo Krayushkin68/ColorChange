@@ -1,6 +1,7 @@
-import numpy as np
-import cv2
 import random
+
+import cv2
+import numpy as np
 
 colors = {'blue': range(0, 25),
           'light blue': range(25, 50),
@@ -64,9 +65,4 @@ def change_colors(img, means, col):
     Z = np.uint8(Z)
 
     Z = Z.reshape((img.shape))
-    cv2.imwrite('res.jpg', Z)
-
-
-if __name__ == '__main__':
-    cols = transform_colors('a7a5c6 8797b2 6d8a96 5d707f 66ced6 64B7C1')
-    change_colors('Scream3.jpg', 30, cols)
+    cv2.imwrite('Image/res.jpg', Z)

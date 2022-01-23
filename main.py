@@ -1,6 +1,7 @@
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
-from color import Ui_MainWindow
+
+from UI.color import Ui_MainWindow
 from cv_change import *
 
 
@@ -21,7 +22,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             edit_colors = transform_colors(edit_colors)
         K = int(self.spinBox.text())
         change_colors(self.start_img, K, edit_colors)
-        res_img = QPixmap('res.jpg')
+        res_img = QPixmap('Image/res.jpg')
         self.label_2.setPixmap(res_img)
         self.label_2.resize(res_img.width(), res_img.height())
 
